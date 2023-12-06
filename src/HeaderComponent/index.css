@@ -5,7 +5,7 @@ body {
 
 .navbar {
   background: #000000;
-  padding: 12px 90px;
+  padding: 0px 190px;
 }
 .container {
   display: flex;
@@ -17,11 +17,43 @@ body {
 }
 
 .paragraphColors {
+  font-size: 10px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+}
+.paragraphColors:hover {
+  color: #ffffff;
+}
+.subParagraph {
+  font-size: 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+}
+.paragraphColorsMenu {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 9px 0px 7px 0px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+}
+.paragraphColorsMenu:hover {
+  color: #ffffff;
+}
+.subParagraph:hover {
   color: #ffffff;
 }
 .sidebarBtn {
   background: inherit;
   border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+}
+.sidebarBtn:hover {
   color: #ffffff;
 }
 @media only screen and (max-width: 500px) {

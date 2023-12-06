@@ -4,6 +4,7 @@ import "./index.css";
 
 const Header = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const [connectFieldsActive, setConnectFieldsActive] = useState(false);
   return (
     <nav className="navbar">
       <div className="container">
@@ -13,7 +14,16 @@ const Header = () => {
             <p className="paragraphColors">Home</p>
             <p className="paragraphColors">The Agency</p>
             <p className="paragraphColors">Projects</p>
-            <p className="paragraphColors">Expertise</p>
+            <p
+              className="paragraphColors"
+              onMouseEnter={() => setConnectFieldsActive(true)}
+              onClick={() => {
+                setConnectFieldsActive((prev) => !prev);
+                setOpenSidebar(false);
+              }}
+            >
+              Expertise
+            </p>
           </div>
         )}
         <div
@@ -23,12 +33,16 @@ const Header = () => {
           }}
         >
           {window.innerWidth > 500 && (
-            <p className="paragraphColors">Connect with us {">"}</p>
+            <p className="paragraphColors">Connect with us {" >"}</p>
           )}
           {window.innerWidth <= 1024 && (
             <button
               className="sidebarBtn"
-              onClick={() => setOpenSidebar((prev) => !prev)}
+              style={{ color: openSidebar && "#FFFFFF" }}
+              onClick={() => {
+                setOpenSidebar((prev) => !prev);
+                setConnectFieldsActive(false);
+              }}
             >
               ☰
             </button>
@@ -36,15 +50,35 @@ const Header = () => {
         </div>
       </div>
       {openSidebar && (
-        <div>
-          <p className="paragraphColors">Home</p>
-          <p className="paragraphColors">Agency</p>
-          <p className="paragraphColors">Projects</p>
-          <p className="paragraphColors">Expertise</p>
+        <div style={{ padding: "40px 22px 84px 22px" }}>
+          <p className="paragraphColorsMenu">Home</p>
+          <p className="paragraphColorsMenu">Agency</p>
+          <p className="paragraphColorsMenu">Projects</p>
+          <p
+            className="paragraphColorsMenu"
+            onMouseEnter={() => setConnectFieldsActive(true)}
+            onClick={() => {
+              setConnectFieldsActive((prev) => !prev);
+              setOpenSidebar(false);
+            }}
+          >
+            Expertise
+          </p>
 
           {window.innerWidth <= 500 && (
-            <p className="paragraphColors">Connect with us {">"}</p>
+            <p className="paragraphColorsMenu">Connect with us {">"}</p>
           )}
+        </div>
+      )}
+      {connectFieldsActive && (
+        <div
+          style={{ padding: "40px 22px 84px 22px" }}
+          onMouseLeave={() => setConnectFieldsActive(false)}
+        >
+          <p className="subParagraph">Sub1</p>
+          <p className="subParagraph">Sub2</p>
+          <p className="subParagraph">Sub3</p>
+          <p className="subParagraph">Sub4</p>
         </div>
       )}
     </nav>
