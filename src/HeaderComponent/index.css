@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background: #000000;
+  padding: 12px 90px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logoImage {
+  width: 70px;
+}
+
+.paragraphColors {
+  color: #ffffff;
+}
+.sidebarBtn {
+  background: inherit;
+  border: none;
+  color: #ffffff;
+}
+@media only screen and (max-width: 500px) {
+  .navbar {
+    padding: 8px 20px;
+  }
+}
