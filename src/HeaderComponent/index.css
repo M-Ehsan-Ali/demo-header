@@ -5,13 +5,15 @@ body {
 
 .navbar {
   background: #000000;
-  padding: 0px 190px;
+  padding: 0px 20px; /* Adjusted padding for smaller screens */
 }
+
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .logoImage {
   width: 70px;
 }
@@ -20,42 +22,66 @@ body {
   font-size: 10px;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.8);
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
 }
+
 .paragraphColors:hover {
   color: #ffffff;
 }
+
 .subParagraph {
   font-size: 12px;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.8);
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
 }
+.sub-menu {
+  height: 0px;
+  transition: opacity 0.3s ease-in,
+    transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Added cubic-bezier for ease-in from top */
+  transform-origin: top;
+  transform: translateY(-100%); /* Initially positioned above the viewport */
+  opacity: 0; /* Initially hidden */
+}
+
+.sub-menu.active {
+  height: auto;
+  transform: translateY(
+    0
+  ); /* Show the sub-menu by moving it to translateY(0) */
+  opacity: 1; /* Show the sub-menu */
+}
+
 .paragraphColorsMenu {
   font-size: 24px;
   cursor: pointer;
   padding: 9px 0px 7px 0px;
   color: rgba(255, 255, 255, 0.8);
-  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
 }
+
 .paragraphColorsMenu:hover {
   color: #ffffff;
 }
+
 .subParagraph:hover {
   color: #ffffff;
 }
+
 .sidebarBtn {
   background: inherit;
   border: none;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.8);
 }
+
 .sidebarBtn:hover {
   color: #ffffff;
 }
+
 @media only screen and (max-width: 500px) {
   .navbar {
     padding: 8px 20px;

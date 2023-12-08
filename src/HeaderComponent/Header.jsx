@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../download.jpeg";
 import "./index.css";
 
 const Header = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [connectFieldsActive, setConnectFieldsActive] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleSidebarToggle = () => {
+    setOpenSidebar((prev) => !prev);
+    setConnectFieldsActive(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="container">
         <img className="logoImage" src={logo} alt="Logo" />
-        {window.innerWidth > 1024 && (
+        {windowWidth > 1024 && (
           <div style={{ display: "flex", gap: "80px" }}>
             <p className="paragraphColors">Home</p>
             <p className="paragraphColors">The Agency</p>
@@ -32,17 +51,14 @@ const Header = () => {
             display: "flex",
           }}
         >
-          {window.innerWidth > 500 && (
+          {windowWidth > 500 && (
             <p className="paragraphColors">Connect with us {" >"}</p>
           )}
-          {window.innerWidth <= 1024 && (
+          {windowWidth <= 1024 && (
             <button
               className="sidebarBtn"
               style={{ color: openSidebar && "#FFFFFF" }}
-              onClick={() => {
-                setOpenSidebar((prev) => !prev);
-                setConnectFieldsActive(false);
-              }}
+              onClick={handleSidebarToggle}
             >
               ☰
             </button>
@@ -50,7 +66,7 @@ const Header = () => {
         </div>
       </div>
       {openSidebar && (
-        <div style={{ padding: "40px 22px 84px 22px" }}>
+        <div className="sidebar-menu">
           <p className="paragraphColorsMenu">Home</p>
           <p className="paragraphColorsMenu">Agency</p>
           <p className="paragraphColorsMenu">Projects</p>
@@ -64,23 +80,20 @@ const Header = () => {
           >
             Expertise
           </p>
-
-          {window.innerWidth <= 500 && (
+          {windowWidth <= 500 && (
             <p className="paragraphColorsMenu">Connect with us {">"}</p>
           )}
         </div>
       )}
-      {connectFieldsActive && (
-        <div
-          style={{ padding: "40px 22px 84px 22px" }}
-          onMouseLeave={() => setConnectFieldsActive(false)}
-        >
-          <p className="subParagraph">Sub1</p>
-          <p className="subParagraph">Sub2</p>
-          <p className="subParagraph">Sub3</p>
-          <p className="subParagraph">Sub4</p>
-        </div>
-      )}
+      <div
+        className={`sub-menu ${connectFieldsActive ? "active" : ""}`}
+        onMouseLeave={() => setConnectFieldsActive(false)}
+      >
+        <p className="subParagraph">Sub1</p>
+        <p className="subParagraph">Sub2</p>
+        <p className="subParagraph">Sub3</p>
+        <p className="subParagraph">Sub4</p>
+      </div>
     </nav>
   );
 };
